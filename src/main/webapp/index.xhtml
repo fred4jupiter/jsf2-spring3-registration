@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html" template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="pageTitle">Index Demo Page</ui:define>
+    <ui:define name="content">
+
+        <div class="well">
+            <h:form id="reg" styleClass="form-horizontal">
+                <fieldset>
+                    <h3>Member Registration</h3>
+                    <br/>
+                    <h:panelGroup rendered="#{(not facesContext.validationFailed) and (not empty facesContext.messageList)}">
+                        <div class="alert alert-success">
+                            <a class="close" data-dismiss="alert">×</a>
+                            <h:messages styleClass="messages" errorClass="invalid" infoClass="valid" warnClass="warning" globalOnly="true"/>
+                        </div>
+                    </h:panelGroup>
+
+                    <div class="control-group #{!firstname.valid ? 'error' : ''}">
+                        <h:outputLabel for="firstname" value="Firstname:" styleClass="control-label"/>
+
+                        <div class="controls">
+                            <h:inputText id="firstname" value="#{registrationUserBean.firstname}" binding="#{firstname}"/>
+                            <h:message for="firstname" errorClass="help-inline"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group #{!lastname.valid ? 'error' : ''}">
+                        <h:outputLabel for="lastname" value="Lastname:" styleClass="control-label"/>
+
+                        <div class="controls">
+                            <h:inputText id="lastname" value="#{registrationUserBean.lastname}" binding="#{lastname}"/>
+                            <h:message for="lastname" errorClass="help-inline"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group #{!email.valid ? 'error' : ''}">
+                        <h:outputLabel for="email" value="Email:" styleClass="control-label"/>
+
+                        <div class="controls">
+                            <h:inputText id="email" value="#{registrationUserBean.email}" binding="#{email}"/>
+                            <h:message for="email" errorClass="help-inline"/>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <h:commandButton id="register"
+                                         action="#{registrationUserBean.register}" value="Register" styleClass="btn btn-primary"/>
+                    </div>
+                </fieldset>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

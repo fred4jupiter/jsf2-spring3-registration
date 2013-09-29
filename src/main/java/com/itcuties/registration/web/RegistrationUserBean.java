@@ -7,6 +7,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 
 import com.itcuties.registration.MessageFlashBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,8 @@ import com.itcuties.registration.service.RegistrationService;
 @SessionScoped
 public class RegistrationUserBean {
 
+    private static final Logger LOG = LoggerFactory.getLogger(RegistrationUserBean.class);
+
     // This is going to be injected by Spring framework
     @Autowired
     private RegistrationService registrationService;
@@ -35,7 +39,7 @@ public class RegistrationUserBean {
      */
     public String register() {
         // Output some info
-        System.out.println("RegistrationUserBean:: Registering user " + firstname + " " + lastname + ", with email " + email);
+        LOG.debug("RegistrationUserBean:: Registering user {} {}, with email {}", firstname, lastname, email);
 
         // Call the business object to register the user
         registrationService.registerUser(firstname, lastname, email);

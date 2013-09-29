@@ -6,22 +6,6 @@
 		</encoder>
 	</appender>
 
-	<logger name="org.camunda.bpm">
-		<level value="WARN" />
-	</logger>
-	
-	<logger name="java.sql">
-		<level value="WARN" />
-	</logger>
-	
-	<logger name="org.apache.ibatis">
-		<level value="WARN" />
-	</logger>
-	
-	<logger name="ch.qos.logback">
-		<level value="WARN" />
-	</logger>
-
 	<logger name="com.itcuties.registration">
 		<level value="DEBUG" />
 	</logger>
